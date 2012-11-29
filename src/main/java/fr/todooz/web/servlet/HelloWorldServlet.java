@@ -25,6 +25,9 @@ public class HelloWorldServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
 
         writer.write("<html><head></head><body>Hello " + name + " !</body></html>");*/
-    	request.getRequestDispatcher("index.html").forward(request, response);
+    	//request.getRequestDispatcher("index.html").forward(request, response);
+        request.setAttribute("name", request.getParameter("name"));
+
+        request.getRequestDispatcher("/WEB-INF/jsp/hello.jsp").forward(request, response);
     }
 }
