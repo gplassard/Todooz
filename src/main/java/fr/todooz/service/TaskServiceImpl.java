@@ -62,4 +62,14 @@ public class TaskServiceImpl implements TaskService {
 		int size = session.createCriteria(Task.class).list().size();
 		return size;
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Task> findByTag(String tag) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria crit = session.createCriteria(Task.class).add(Restrictions.ilike("tags", "%"+tag+"%"));
+		@SuppressWarnings("unchecked")
+		List<Task> tasks = crit.list();
+		return tasks;
+	}
 }

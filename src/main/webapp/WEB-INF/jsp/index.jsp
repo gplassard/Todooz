@@ -9,7 +9,7 @@
 <head>
 <title>Todooz</title>
 <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -51,6 +51,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

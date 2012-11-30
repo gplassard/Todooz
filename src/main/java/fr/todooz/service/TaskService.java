@@ -16,4 +16,6 @@ public interface TaskService {
 
 	public int count();
 
+	public List<Task> findByTag(String tag);
+
 }
