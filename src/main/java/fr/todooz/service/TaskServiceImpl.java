@@ -23,7 +23,7 @@ public class TaskServiceImpl implements TaskService {
 	@Transactional
 	public void save(Task task) {
 		Session session = sessionFactory.getCurrentSession();
-		session.save(task);
+		session.saveOrUpdate(task);
 	}
 
 	@Override

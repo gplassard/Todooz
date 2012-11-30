@@ -82,4 +82,14 @@ public class TaskServiceTest {
 	      return task;
 	  }
 	
+	@Test
+	public void udpate() {
+	    Task task = task();
+
+	    taskService.save(task);
+	    taskService.save(task);
+
+	    Assert.assertEquals(1, taskService.count());
+	}
+	
 }
