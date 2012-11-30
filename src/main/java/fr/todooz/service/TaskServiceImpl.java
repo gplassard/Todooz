@@ -84,4 +84,11 @@ public class TaskServiceImpl implements TaskService {
 		return tasks;
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Task findById(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Task) session.get(Task.class, id);
+	}
+
 }

@@ -22,4 +22,6 @@ public interface TaskService {
 
 	public List<Task> findByInterval(Interval tomorrowInterval);
 
+	public Task findById(Long id);
+
 }

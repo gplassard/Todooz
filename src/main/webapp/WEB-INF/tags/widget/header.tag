@@ -2,7 +2,7 @@
 
 <div class="navbar navbar-inverse">
     <div class="navbar-inner">
-        <span class="brand">Todooz</span>
+        <a href="index.html" class="brand">Todooz</a>
         <form class="navbar-search pull-left" action="/search">
             <input name="query" type="text" class="search-query" placeholder="Search">
         </form>
