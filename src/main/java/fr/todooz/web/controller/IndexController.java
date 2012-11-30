@@ -116,7 +116,6 @@ public class IndexController {
 		if (taskService.count() == 0) {
 			Task tache1 = new Task();
 			tache1.setDate(new Date());
-			tache1.setId(1L);
 			tache1.setTags("bientot,manger");
 			tache1.setText("On a faim!!!!");
 			tache1.setTitle("toto");
@@ -124,7 +123,6 @@ public class IndexController {
 
 			Task tache2 = new Task();
 			tache2.setDate(new Date());
-			tache2.setId(2L);
 			tache2.setTags("lorem ipsum");
 			tache2.setText("pfiouuuuuu");
 			tache2.setTitle("tutu");
@@ -132,7 +130,6 @@ public class IndexController {
 
 			Task tache3 = new Task();
 			tache3.setDate(new Date());
-			tache3.setId(3L);
 			tache3.setTags("Java c'est bien!");
 			tache3.setText("youhou");
 			tache3.setTitle("ohohoho");
