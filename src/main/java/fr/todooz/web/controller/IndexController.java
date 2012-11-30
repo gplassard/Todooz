@@ -6,6 +6,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.joda.time.DateMidnight;
+import org.joda.time.Interval;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +43,32 @@ public class IndexController {
 		model.addAttribute("tasks", taskService.findByTag(tag));
 		addTags(model);
 		return "index";
+	}
+	
+	@RequestMapping("/today")
+	public String timeToday(Model model){
+		model.addAttribute("tasks",taskService.findByInterval(todayInterval()));
+		addTags(model);
+		return "index";
+	}
+	
+	@RequestMapping("/tomorrow")
+	public String timeTomorrow(Model model){
+		model.addAttribute("tasks",taskService.findByInterval(tomorrowInterval()));
+		addTags(model);
+		return "index";
+	}
+	
+	private Interval todayInterval() {
+	    DateMidnight today = new DateMidnight();
+
+	    return new Interval(today, today.plusDays(1));
+	}
+	
+	private Interval tomorrowInterval() {
+	    DateMidnight today = new DateMidnight();
+
+	    return new Interval(today.plusDays(1), today.plusDays(2));
 	}
 
 	public void addTags(Model model){

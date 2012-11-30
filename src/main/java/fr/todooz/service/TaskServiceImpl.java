@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.joda.time.Interval;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -72,4 +73,15 @@ public class TaskServiceImpl implements TaskService {
 		List<Task> tasks = crit.list();
 		return tasks;
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Task> findByInterval(Interval timeInterval) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria crit = session.createCriteria(Task.class).add(Restrictions.between("date", timeInterval.getStart().toDate(), timeInterval.getEnd().toDate()));
+		@SuppressWarnings("unchecked")
+		List<Task> tasks = crit.list();
+		return tasks;
+	}
+
 }
