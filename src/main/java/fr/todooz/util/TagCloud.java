@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class TagCloud {
+	
     private List<String> tags = new ArrayList<String>();
 
     public void add(String...tableauDeTags) {
