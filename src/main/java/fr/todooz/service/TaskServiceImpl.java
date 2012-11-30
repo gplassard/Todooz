@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +33,7 @@ public class TaskServiceImpl implements TaskService {
 
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Task> findAll() {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria crit = session.createCriteria(Task.class);
@@ -45,7 +44,7 @@ public class TaskServiceImpl implements TaskService {
 
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Task> findByQuery(String query) {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria crit = session.createCriteria(Task.class).add(Restrictions.ilike("title", "%"+query+"%"));
@@ -55,7 +54,7 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public int count() {
 		Session session = sessionFactory.getCurrentSession();
 		int size = session.createCriteria(Task.class).list().size();
