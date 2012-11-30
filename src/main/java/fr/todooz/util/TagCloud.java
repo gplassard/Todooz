@@ -36,5 +36,9 @@ public class TagCloud {
 	public void shuffle() {
 		Collections.shuffle(tags);
 	}
+	
+	public List<String> getTags() {
+	    return tags;
+	}
 
 }

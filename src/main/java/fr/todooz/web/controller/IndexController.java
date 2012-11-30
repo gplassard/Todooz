@@ -1,6 +1,7 @@
 package fr.todooz.web.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -11,32 +12,42 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.todooz.domain.Task;
+import fr.todooz.service.TagCloudService;
 import fr.todooz.service.TaskService;
 
 @Controller
 public class IndexController {
 	@Inject
 	private TaskService taskService;
+	@Inject
+	private TagCloudService tagCloudService;
 
 	@RequestMapping({ "/", "/index" })
 	public String index(Model model) {
 		model.addAttribute("tasks", taskService.findAll());
-
+		addTags(model);
 		return "index";
 	}
 
 	@RequestMapping("/search")
 	public String search(String query, Model model) {
 		model.addAttribute("tasks", taskService.findByQuery(query));
+		addTags(model);
 		return "index";
 	}
 
 	@RequestMapping("/tag/{tag}")
 	public String tag(@PathVariable String tag, Model model) {
 		model.addAttribute("tasks", taskService.findByTag(tag));
+		addTags(model);
 		return "index";
 	}
 
+	public void addTags(Model model){
+		List<String> tags = tagCloudService.buildTagCloud().getTags();
+		model.addAttribute("tags",	tags);
+	}
+	
 	@PostConstruct
 	public void bootstrap() {
 		if (taskService.count() == 0) {

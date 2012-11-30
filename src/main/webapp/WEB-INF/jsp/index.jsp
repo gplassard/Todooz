@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib tagdir="/WEB-INF/tags/widget" prefix="widget" %>
+<%@ taglib tagdir="/WEB-INF/tags/widget" prefix="widget"%>
 
 <!DOCTYPE html>
 <html>
@@ -34,19 +34,11 @@
 
 				<div>
 					<legend>Tags</legend>
-					<a href="/tag/java" style="font-size: 14px">java</a> <a
-						href="/tag/java" style="font-size: 20px">java</a> <a
-						href="/tag/java" style="font-size: 16px">java</a> <a
-						href="/tag/java" style="font-size: 12px">java</a> <a
-						href="/tag/java" style="font-size: 10px">java</a> <a
-						href="/tag/java" style="font-size: 22px">java</a> <a
-						href="/tag/java" style="font-size: 12px">java</a> <a
-						href="/tag/java" style="font-size: 14px">java</a> <a
-						href="/tag/java" style="font-size: 18px">java</a> <a
-						href="/tag/java" style="font-size: 24px">java</a> <a
-						href="/tag/java" style="font-size: 12px">java</a> <a
-						href="/tag/java" style="font-size: 10px">java</a> <a
-						href="/tag/java" style="font-size: 14px">java</a>
+					<c:forEach var="tag" items="${tags }">
+						<widget:tag tag="${tag }" />
+					</c:forEach>
+
+
 				</div>
 			</div>
 		</div>
