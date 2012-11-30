@@ -42,7 +42,6 @@ public class TaskServiceTest {
 	
 	@Test
 	public void delete() {
-	    TaskService taskService = new TaskService();
 	    Task task = task();
 	    taskService.save(task);
 	    taskService.delete(task.getId());
@@ -53,7 +52,6 @@ public class TaskServiceTest {
 	
 	@Test
 	public void findAll() {
-	    TaskService taskService = new TaskService();
 	    taskService.save(task());
 	    taskService.save(task());
 	    Assert.assertEquals(2, taskService.findAll().size());
@@ -61,7 +59,6 @@ public class TaskServiceTest {
 	
 	@Test
 	public void findByQuery() {
-	    TaskService taskService = new TaskService();
 	    taskService.save(task());
 	    taskService.save(task());
 	    Assert.assertEquals(2, taskService.findByQuery("read").size());
@@ -71,11 +68,8 @@ public class TaskServiceTest {
 	
 	@Test
 	public void count() {
-	    TaskService taskService = new TaskService();
-
 	    taskService.save(task());
 	    taskService.save(task());
-
 	    Assert.assertEquals(2, taskService.count());
 	}
 
