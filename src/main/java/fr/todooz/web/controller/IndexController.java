@@ -88,6 +88,12 @@ public class IndexController {
 	    return "edit";
 	}
 	
+	@RequestMapping("/edit/{id}/delete")
+	public String delete(@PathVariable Long id, Model model) {
+		taskService.delete(id);
+	    return "redirect:/";
+	}
+	
 	@InitBinder
 	public void initBinder(DataBinder binder) {
 	    SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
