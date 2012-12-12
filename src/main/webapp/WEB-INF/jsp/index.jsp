@@ -16,6 +16,9 @@
 		<widget:header />
 		<div class="row">
 			<div class="span9">
+			<c:if test="${not empty flashMessage}">
+    			<div class="alert">${flashMessage}</div>
+			</c:if>
 				<legend>All tasks</legend>
 
 				<c:forEach var="task" items="${tasks}">

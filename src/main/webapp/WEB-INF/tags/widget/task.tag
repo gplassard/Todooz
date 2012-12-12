@@ -10,11 +10,11 @@
 <div>
 	<p>
 		<fmt:formatDate value="${task.date}" pattern="dd MMM yyyy" />
-		<a href="/edit/${task.id}/delete" class="btn btn-primary">Delete</a>
 	</p>
 	<span class="lead"><a href="/edit/${task.id}">${fn:escapeXml(task.title)}</a></span>
 	<c:forEach var="tag" items="${task.tagArray}">
 		<span class="badge badge-info"> ${fn:escapeXml(tag)}</span>
 	</c:forEach>
+	<a href="/edit/${task.id}/delete" class="btn btn-primary">Delete</a>
 	<p>${fn:escapeXml(task.text)}</p>
 </div>

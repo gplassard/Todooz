@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.joda.time.Interval;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,7 @@ public class TaskServiceImpl implements TaskService {
 	public List<Task> findAll() {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria crit = session.createCriteria(Task.class);
+		crit.addOrder(Order.desc("date"));
 		@SuppressWarnings("unchecked")
 		List<Task> tasks = crit.list();
 		return tasks;
