@@ -20,7 +20,7 @@ public class DerbyTest {
 		// chargement du driver
 		Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 
-		// création de la connexion
+		// creation de la connexion
 		connection = DriverManager
 				.getConnection("jdbc:derby:target/testdb;create=true");
 

@@ -68,7 +68,6 @@ public class IndexController {
 	
 	@RequestMapping("/add")
 	public String add(Model model) {
-	    // on injecte une Task vierge dans le modèle
 	    model.addAttribute("task", new Task());
 	    addTags(model);
 	    return "edit";
@@ -113,6 +112,7 @@ public class IndexController {
 	
 	@PostConstruct
 	public void bootstrap() {
+		/*
 		if (taskService.count() == 0) {
 			Task tache1 = new Task();
 			tache1.setDate(new Date());
@@ -137,6 +137,6 @@ public class IndexController {
 			tache3.setText("youhou");
 			tache3.setTitle("ohohoho");
 			taskService.save(tache3);
-		}
+		}*/
 	}
 }
